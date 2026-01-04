@@ -13,7 +13,7 @@ if (!admin.apps.length) {
 const db = admin.firestore();
 
 exports.handler = async () => {
-  const ref = db.collection("items").doc("lampada_1");
+  const ref = db.collection("items").doc("oggetto_vendita");
   const snap = await ref.get();
 
   if (!snap.exists) {
@@ -32,7 +32,7 @@ exports.handler = async () => {
   return {
     statusCode: 200,
     body: JSON.stringify({
-      id: "lampada_1",
+      id: "oggetto_vendita",
       stato_precedente: stato,
       stato_attuale: stato === "disponibile" ? "occupato" : stato
     })
