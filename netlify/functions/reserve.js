@@ -35,7 +35,7 @@ const db = admin.firestore();
 // === FUNCTION ===
 exports.handler = async () => {
   try {
-    const docRef = db.collection("items").doc("lampada_1");
+    const docRef = db.collection("items").doc("oggetto_vendita");
     const docSnap = await docRef.get();
 
     if (!docSnap.exists) {
@@ -54,7 +54,7 @@ exports.handler = async () => {
     return {
       statusCode: 200,
       body: JSON.stringify({
-        id: "lampada_1",
+        id: "oggetto_vendita",
         stato_precedente: statoPrecedente,
         stato_attuale: statoAttuale,
       }),
@@ -66,31 +66,4 @@ exports.handler = async () => {
       body: JSON.stringify({ errore: "Errore interno", details: err.message }),
     };
   }
-};
-
-exports.handler = async () => {
-  const ref = db.collection("items").doc("oggetto_vendita");
-  const snap = await ref.get();
-
-  if (!snap.exists) {
-    return {
-      statusCode: 404,
-      body: JSON.stringify({ errore: "Oggetto non trovato" })
-    };
-  }
-
-  const stato = snap.data().status;
-
-  if (stato === "disponibile") {
-    await ref.update({ status: "occupato" });
-  }
-
-  return {
-    statusCode: 200,
-    body: JSON.stringify({
-      id: "oggetto_vendita",
-      stato_precedente: stato,
-      stato_attuale: stato === "disponibile" ? "occupato" : stato
-    })
-  };
 };
