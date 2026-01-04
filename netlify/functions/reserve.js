@@ -1,11 +1,19 @@
 const admin = require("firebase-admin");
 
+// 1. Ricostruisci la Base64
+const base64Key =
+  process.env.FIREBASE_PRIVATE_KEY_B64_PART1 +
+  process.env.FIREBASE_PRIVATE_KEY_B64_PART2;
+
+// 2. Decodifica Base64 → PEM
+const privateKey = Buffer.from(base64Key, "base64").toString("utf8");
+
 if (!admin.apps.length) {
   admin.initializeApp({
     credential: admin.credential.cert({
       projectId: process.env.FIREBASE_PROJECT_ID,
       clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-      privateKey: Buffer.from(process.env.FIREBASE_PRIVATE_KEY_B64, 'base64').toString('utf8'),
+      privateKey: privateKey,
     })
   });
 }
