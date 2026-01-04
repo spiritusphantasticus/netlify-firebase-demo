@@ -6,7 +6,7 @@
   <pre id="out"></pre>
   <script>
     function test(){
-      fetch('/.netlify-firebase-demo/functions/reserve')
+      fetch('/.netlify/functions/reserve')
       .then(r => r.json())
       .then(d => {
         document.getElementById('out').textContent = JSON.strigify(d, null, 2); 
