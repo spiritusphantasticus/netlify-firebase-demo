@@ -9,7 +9,7 @@
       fetch('/.netlify/functions/reserve')
       .then(r => r.json())
       .then(d => {
-        document.getElementById('out').textContent = JSON.strigify(d, null, 2); 
+        document.getElementById('out').textContent = JSON.stringify(d, null, 2); 
       });
     }
   </script>
