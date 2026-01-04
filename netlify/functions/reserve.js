@@ -68,8 +68,6 @@ exports.handler = async () => {
   }
 };
 
-const db = admin.firestore();
-
 exports.handler = async () => {
   const ref = db.collection("items").doc("oggetto_vendita");
   const snap = await ref.get();
