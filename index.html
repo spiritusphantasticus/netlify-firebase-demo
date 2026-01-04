@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h1>Test Netlify</h1>
+  <button onclick="test()">Chiama backend</button>
+  <pre id="out"></pre>
+  <script>
+    function test(){
+      fetch('/.netlify-firebase-demo/functions/reserve')
+      .then(r => r.json())
+      .then(d => {
+        document.getElementById('out').textContent = JSON.strigify(d, null, 2); 
+      });
+    }
+  </script>
+</body>  
+</html>
