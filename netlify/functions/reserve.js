@@ -15,11 +15,11 @@ console.log("PART1 length:", part1?.length);
 console.log("PART2 length:", part2?.length);
 
 // Ricostruzione Base64
-const base64Key = (part1 || "") + (part2 || "");
-console.log("Base64 total length:", base64Key.length);
+const base64Key1 = (part1 || "") + (part2 || "");
+console.log("Base64 total length:", base64Key1.length);
 
 // Decode
-const decodedKey = Buffer.from(base64Key, "base64").toString("utf8");
+const decodedKey = Buffer.from(base64Key1, "base64").toString("utf8");
 
 // DEBUG SICURO
 console.log("Decoded key length:", decodedKey.length);
